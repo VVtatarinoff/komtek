@@ -21,7 +21,7 @@ class RefVersions(models.Model):
     reference = models.ForeignKey(RefTitles, on_delete=models.RESTRICT,
                                   verbose_name='глобальный справочник')
     version = models.CharField(max_length=50, verbose_name='Версия справочника')
-    init_date = models.DateTimeField(verbose_name='Дата начала действия')
+    init_date = models.DateField(verbose_name='Дата начала действия')
 
     def __str__(self):
         return self.version
