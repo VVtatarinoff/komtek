@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -25,6 +26,13 @@ class RefVersions(models.Model):
 
     def __str__(self):
         return self.version
+
+    def save(self, *args, **kwargs):
+        same_name = RefVersions.objects.filter(reference_id=self.reference_id, version=self.version)
+        if same_name:
+            raise ValidationError(
+                {'version': "Не может быть одинаковых версий для одного справочника"})
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Версии справочников'

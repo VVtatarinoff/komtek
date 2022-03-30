@@ -21,25 +21,25 @@ REF_TITLE_TEST = [
 REF_VERSIONS_TEST = [
     {
         'id': 1,
-        'reference': 1,
+        'reference_id': 1,
         'version': 'first_1',
         'init_date': datetime.date(2022, 1, 1)
     },
     {
         'id': 2,
-        'reference': 1,
+        'reference_id': 1,
         'version': 'first_2',
         'init_date': datetime.date(2021, 1, 1)
     },
     {
         'id': 3,
-        'reference': 2,
+        'reference_id': 2,
         'version': 'second_1',
         'init_date': datetime.date(2022, 1, 1)
     },
     {
         'id': 4,
-        'reference': 3,
+        'reference_id': 3,
         'version': 'third_1',
         'init_date': datetime.date(2020, 2, 1)
     },
