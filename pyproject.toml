@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "komtek"
+version = "0.1.0"
+description = "test task for komtek"
+authors = ["vladimir <vvtatarinoff@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.0.3"
+gunicorn = "^20.1.0"
+python-dotenv = "^0.20.0"
+psycopg2-binary = "^2.9.3"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+pytest-django = "^4.5.2"
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
