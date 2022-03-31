@@ -28,22 +28,13 @@ class RefVersions(models.Model):
         return self.version
 
     def save(self, *args, **kwargs):
-        same_name = RefVersions.objects.filter(reference_id=self.reference_id, version=self.version)
-        if same_name:
-            raise ValidationError(
-                {'version': "Не может быть одинаковых версий для одного справочника"})
-
         if not self.version:
             raise ValidationError(
                 {'version': 'поле не может быть пустым'})
-        same_date = RefVersions.objects.filter(reference_id=self.reference_id, init_date=self.init_date)
-        if same_date:
-            raise ValidationError(
-                {'init_date': "Версия справочника с этой датой уже создана"})
-
         return super().save(*args, **kwargs)
 
     class Meta:
+        unique_together = [['reference', 'version'], ['reference', 'init_date']]
         verbose_name = 'Версии справочников'
         verbose_name_plural = 'Версии справочников'
         ordering = ['id']
@@ -56,10 +47,6 @@ class Elements(models.Model):
     value = models.CharField(max_length=150, verbose_name='Значение элемента')
 
     def save(self, *args, **kwargs):
-        same_name = Elements.objects.filter(ref_version_id=self.ref_version_id, code=self.code)
-        if same_name:
-            raise ValidationError(
-                {'code': "Не может быть одинакового кода элемента для одной версии справочника"})
         if not self.code:
             raise ValidationError(
                 {'code': 'поле не может быть пустым'})
@@ -69,6 +56,7 @@ class Elements(models.Model):
         return super().save(*args, **kwargs)
 
     class Meta:
+        unique_together = ['ref_version', 'code']
         verbose_name = 'Элементы справочника'
         verbose_name_plural = 'Элементы справочника'
         ordering = ['id']

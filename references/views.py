@@ -10,12 +10,11 @@ from references.serializers import ReferenceSerializer
 
 
 class ReferencesAPIView(generics.ListAPIView):
-    #queryset = RefVersions.objects.all()
     serializer_class = ReferenceSerializer
 
     def get_queryset(self):
         date = self.request.query_params.get('date', datetime.date(datetime.now()))
-        return RefVersions.objects.filter(init_date__lte=date).order_by('reference_id', '-init_date').distinct('reference_id')
+        return RefVersions.objects.filter(
+            init_date__lte=date).order_by('reference_id', '-init_date').distinct('reference_id')
 
 
-# class ReferencesAPIView(APIView):
