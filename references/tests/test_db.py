@@ -35,5 +35,4 @@ def test_create_null_version(setup_ref_versions):
     init_len = len(RefVersions.objects.all())
     with pytest.raises(Exception) as e:
         RefVersions.objects.create(**new_ver)
-    assert e.match('поле не может быть пустым')
-    assert init_len == len(RefVersions.objects.all())
+    assert e.match('повторяющееся значение ключа нарушает ограничение уникальности')
