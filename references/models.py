@@ -22,7 +22,7 @@ class RefVersions(models.Model):
     reference = models.ForeignKey(RefTitles, on_delete=models.RESTRICT,
                                   verbose_name='глобальный справочник')
     version = models.CharField(max_length=50, verbose_name='Версия справочника')
-    init_date = models.DateField(auto_now_add=True, verbose_name='Дата начала действия')
+    init_date = models.DateField(verbose_name='Дата начала действия')
 
     def __str__(self):
         return self.version
@@ -32,9 +32,15 @@ class RefVersions(models.Model):
         if same_name:
             raise ValidationError(
                 {'version': "Не может быть одинаковых версий для одного справочника"})
+
         if not self.version:
             raise ValidationError(
                 {'version': 'поле не может быть пустым'})
+        same_date = RefVersions.objects.filter(reference_id=self.reference_id, init_date=self.init_date)
+        if same_date:
+            raise ValidationError(
+                {'init_date': "Версия справочника с этой датой уже создана"})
+
         return super().save(*args, **kwargs)
 
     class Meta:

@@ -18,6 +18,17 @@ def test_create_dublicate_version(setup_ref_versions):
 
 
 @pytest.mark.django_db
+def test_create_dublicate_version(setup_ref_versions):
+    new_ver = copy(REF_VERSIONS_TEST[0])
+    new_ver.pop('id')
+    new_ver['version'] += ' test date'
+    init_len = len(RefVersions.objects.all())
+    with pytest.raises(Exception) as e:
+        RefVersions.objects.create(**new_ver)
+    assert e.match('Версия справочника с этой датой уже создана')
+    assert init_len == len(RefVersions.objects.all())
+
+@pytest.mark.django_db
 def test_create_null_version(setup_ref_versions):
     new_ver = copy(REF_VERSIONS_TEST[0])
     new_ver.pop('id')
