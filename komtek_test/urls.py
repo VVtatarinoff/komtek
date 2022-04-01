@@ -22,6 +22,6 @@ from references.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/references/', ReferencesAPIView.as_view(), name='refs'),
-    path('api/v1/validate/<int:pk>', ValidateElementsAPIView.as_view()),
-    path('api/v1/elements/<int:pk>', ElementsAPIView.as_view())
+    path('api/v1/validate/<int:pk>', ValidateElementsAPIView.as_view(), name='elements'),
+    path('api/v1/elements/<int:pk>', ElementsAPIView.as_view(), name='validation')
 ]

@@ -137,25 +137,25 @@ TEST_CURRENT_ELEMENT = {
 ELEMENTS_TEST_CURRENT = [
     {
         'id': 1,
-        'ref_version': 1,
+        'ref_version_id': 1,
         'code': 'code1',
         'value': TEST_CURRENT_ELEMENT['code1']
     },
     {
         'id': 2,
-        'ref_version': 1,
+        'ref_version_id': 1,
         'code': 'code2',
         'value': TEST_CURRENT_ELEMENT['code2']
     },
     {
         'id': 3,
-        'ref_version': 1,
+        'ref_version_id': 1,
         'code': 'code3',
         'value': TEST_CURRENT_ELEMENT['code3']
     },
     {
         'id': 4,
-        'ref_version': 1,
+        'ref_version_id': 1,
         'code': 'code4',
         'value': TEST_CURRENT_ELEMENT['code4']
     },
@@ -170,20 +170,20 @@ TEST_WEEK_AGO_ELEMENT = {
 
 ELEMENTS_TEST_WEEK_AGO = [
     {
-        'id': 1,
-        'ref_version': 1,
+        'id': 5,
+        'ref_version_id': 1,
         'code': 'code10',
         'value': TEST_WEEK_AGO_ELEMENT['code10']
     },
     {
-        'id': 2,
-        'ref_version': 1,
+        'id': 6,
+        'ref_version_id': 1,
         'code': 'code20',
         'value': TEST_WEEK_AGO_ELEMENT['code20']
     },
     {
-        'id': 3,
-        'ref_version': 1,
+        'id': 7,
+        'ref_version_id': 1,
         'code': 'code30',
         'value': TEST_WEEK_AGO_ELEMENT['code30']
     }
