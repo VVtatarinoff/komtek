@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db.models import Subquery, OuterRef
 from rest_framework import generics
+from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from references.models import RefVersions, RefTitles, Elements
@@ -35,7 +36,7 @@ def get_current_version(ref_id):
     date = datetime.date(datetime.now())
     versions = RefVersions.objects.filter(init_date__lte=date, reference_id=ref_id).order_by('-init_date')
     try:
-        return versions[0]
+        return versions[0].id
     except IndexError:
         return -1
 
@@ -55,5 +56,19 @@ class ElementsAPIView(generics.ListAPIView):
 
 
 class ValidateElementsAPIView(APIView):
-    def post(self, request):
-        pass
+    """Валидирует json словарь в формате ключ:значение для элементов спраовочника
+    код справочника - часть url адреса.
+    Если в параметрах запроса не указан код версии спраочника ?version=##,
+    то берется текущая версия"""
+
+    def post(self, request, **kwargs):
+        data_to_check = request.data
+        keys = set(data_to_check.keys())
+        reference_id = kwargs['pk']
+        version_id = self.request.query_params.get('version', get_current_version(reference_id))
+        elements = list(Elements.objects.filter(ref_version_id=version_id, code__in=keys).all())
+        if len(elements) != len(data_to_check):
+            check = False
+        else:
+            check = all([element.value == str(data_to_check.get(element.code)) for element in elements])
+        return Response({'result': check})
