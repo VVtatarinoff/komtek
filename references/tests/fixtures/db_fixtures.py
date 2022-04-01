@@ -85,44 +85,50 @@ REF_VERSIONS_TEST_CURRENT = [
     },
 ]
 REF_VERSIONS_TEST_MONGTH_AGO = [
-    {
+{
         'id': 5,
+        'reference_id': 1,
+        'version': 'test_old',
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
+    },
+    {
+        'id': 6,
         'reference_id': 5,
         'version': 'test_5',
         'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
-        'id': 6,
+        'id': 7,
         'reference_id': 6,
         'version': 'test_6',
         'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
-        'id': 7,
+        'id': 8,
         'reference_id': 7,
         'version': 'test_7',
         'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
-        'id': 8,
+        'id': 9,
         'reference_id': 8,
         'version': 'test_8',
         'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
-        'id': 9,
+        'id': 10,
         'reference_id': 9,
         'version': 'test_9',
         'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
-        'id': 10,
+        'id': 11,
         'reference_id': 10,
         'version': 'test_10',
         'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
-        'id': 11,
+        'id': 12,
         'reference_id': 11,
         'version': 'test_11',
         'init_date': datetime.date(datetime.now()-timedelta(days=30))
@@ -134,6 +140,7 @@ TEST_CURRENT_ELEMENT = {
     'code3': 'some3',
     'code4': 'some4',
 }
+# элементы для версии 1 справочника 1
 ELEMENTS_TEST_CURRENT = [
     {
         'id': 1,
@@ -167,23 +174,23 @@ TEST_WEEK_AGO_ELEMENT = {
     'code20': 'somessss2',
     'code30': 'somesssss3'
 }
-
+# элементы для версии 5 справочника 1
 ELEMENTS_TEST_WEEK_AGO = [
     {
         'id': 5,
-        'ref_version_id': 1,
+        'ref_version_id': 5,
         'code': 'code10',
         'value': TEST_WEEK_AGO_ELEMENT['code10']
     },
     {
         'id': 6,
-        'ref_version_id': 1,
+        'ref_version_id': 5,
         'code': 'code20',
         'value': TEST_WEEK_AGO_ELEMENT['code20']
     },
     {
         'id': 7,
-        'ref_version_id': 1,
+        'ref_version_id': 5,
         'code': 'code30',
         'value': TEST_WEEK_AGO_ELEMENT['code30']
     }
