@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from references.views import ReferencesAPIView, ElementsAPIView, ValidateElementsAPIView
+from references.views import (
+    ReferencesAPIView, ElementsAPIView, ValidateElementsAPIView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

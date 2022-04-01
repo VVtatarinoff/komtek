@@ -20,6 +20,7 @@ def setup_ref_versions(db, setup_ref_titles):
         vers.append(RefVersions.objects.create(**ver))
     return vers
 
+
 @pytest.fixture
 def setup_elements(db, setup_ref_versions):
     elems = []

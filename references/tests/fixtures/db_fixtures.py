@@ -52,19 +52,19 @@ ELEMENTS_TEST = [
         'code': 'first element first ref',
         'value': 'some first value'
     },
-{
+    {
         'id': 2,
         'ref_version': 2,
         'code': 'first element first ref',
         'value': 'some first old value'
     },
-{
+    {
         'id': 3,
         'ref_version': 3,
         'code': 'first element second ref',
         'value': 'some second value'
     },
-{
+    {
         'id': 4,
         'ref_version': 4,
         'code': 'first element third ref',

@@ -20,12 +20,19 @@ class ReferencesAPIView(generics.ListAPIView):
     serializer_class = ReferenceSerializer
 
     def get_queryset(self):
-        date = self.request.query_params.get('date', datetime.date(datetime.now()))
+        valid_date = self.request.query_params.get(
+            'date',
+            datetime.date(datetime.now()))
+
         valid_versions = RefVersions.objects.filter(
-            init_date__lte=date, reference=OuterRef('pk')).order_by(
+            init_date__lte=valid_date, reference=OuterRef('pk')).order_by(
             'reference_id', '-init_date').distinct('reference_id')
-        reference_list = RefTitles.objects.filter(id__in=valid_versions.values_list('reference', flat=True))
-        reference_list_with_version = reference_list.all().values('id', 'name', 'short_name', 'description').annotate(
+
+        reference_list = RefTitles.objects.filter(
+            id__in=valid_versions.values_list('reference', flat=True))
+
+        reference_list_with_version = reference_list.all().values(
+            'id', 'name', 'short_name', 'description').annotate(
             version_name=Subquery(valid_versions.values('version')),
             version_id=Subquery(valid_versions.values('id')),
             valid_date=Subquery(valid_versions.values('init_date')))
@@ -33,8 +40,11 @@ class ReferencesAPIView(generics.ListAPIView):
 
 
 def get_current_version(ref_id):
+    """возвращает id текущей валидной версии или -1 если не найдена"""
+
     date = datetime.date(datetime.now())
-    versions = RefVersions.objects.filter(init_date__lte=date, reference_id=ref_id).order_by('-init_date')
+    versions = RefVersions.objects.filter(
+        init_date__lte=date, reference_id=ref_id).order_by('-init_date')
     try:
         return versions[0].id
     except IndexError:
@@ -51,8 +61,9 @@ class ElementsAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         ref_id = self.kwargs['pk']
-        version = self.request.query_params.get('version', get_current_version(ref_id))
-        return Elements.objects.filter(ref_version=version)
+        version_id = self.request.query_params.get(
+            'version', get_current_version(ref_id))
+        return Elements.objects.filter(ref_version=version_id)
 
 
 class ValidateElementsAPIView(APIView):
@@ -65,10 +76,14 @@ class ValidateElementsAPIView(APIView):
         data_to_check = request.data
         keys = set(data_to_check.keys())
         reference_id = kwargs['pk']
-        version_id = self.request.query_params.get('version', get_current_version(reference_id))
-        elements = list(Elements.objects.filter(ref_version_id=version_id, code__in=keys).all())
+        version_id = self.request.query_params.get(
+            'version', get_current_version(reference_id))
+        elements = list(Elements.objects.filter(
+            ref_version_id=version_id, code__in=keys).all())
         if len(elements) != len(data_to_check):
             check = False
         else:
-            check = all([element.value == str(data_to_check.get(element.code)) for element in elements])
+            check = all(
+                [element.value == str(data_to_check.get(element.code))
+                 for element in elements])
         return Response({'result': check})
