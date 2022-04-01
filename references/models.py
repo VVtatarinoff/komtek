@@ -32,7 +32,7 @@ class RefVersions(models.Model):
         unique_together = [['reference', 'version'], ['reference', 'init_date']]
         verbose_name = 'Версии справочников'
         verbose_name_plural = 'Версии справочников'
-        ordering = ['id']
+        ordering = ['-init_date']
 
 
 class Elements(models.Model):

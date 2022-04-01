@@ -1,9 +1,13 @@
 from rest_framework import serializers
 
-from references.models import RefVersions
+from references.models import RefVersions, RefTitles
 
 
 class ReferenceSerializer(serializers.ModelSerializer):
+    """Сериализатор для списка словарей"""
     class Meta:
-        model = RefVersions
-        fields = ('reference', 'version', 'init_date')
+        model = RefTitles
+        fields = '__all__'
+
+
+
