@@ -6,7 +6,7 @@ tests:
 
 
 coverage:
-	poetry run pytest --cov=task_manager
+	poetry run pytest --cov=references
 
 build:
 	poetry build

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 REF_TITLE_TEST = [
     {'id': 1,
@@ -89,43 +89,43 @@ REF_VERSIONS_TEST_MONGTH_AGO = [
         'id': 5,
         'reference_id': 5,
         'version': 'test_5',
-        'init_date': datetime.date(datetime.now())
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
         'id': 6,
         'reference_id': 6,
         'version': 'test_6',
-        'init_date': datetime.date(datetime.now())
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
         'id': 7,
         'reference_id': 7,
         'version': 'test_7',
-        'init_date': datetime.date(datetime.now())
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
         'id': 8,
         'reference_id': 8,
         'version': 'test_8',
-        'init_date': datetime.date(datetime.now())
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
         'id': 9,
         'reference_id': 9,
         'version': 'test_9',
-        'init_date': datetime.date(datetime.now())
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
         'id': 10,
         'reference_id': 10,
         'version': 'test_10',
-        'init_date': datetime.date(datetime.now())
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
     {
         'id': 11,
         'reference_id': 11,
         'version': 'test_11',
-        'init_date': datetime.date(datetime.now())
+        'init_date': datetime.date(datetime.now()-timedelta(days=30))
     },
 ]
 TEST_CURRENT_ELEMENT = {

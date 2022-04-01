@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import pytest
 
 from references.models import RefTitles, RefVersions, Elements
@@ -29,3 +30,15 @@ def setup_elements(db, setup_ref_versions):
     for element in (ELEMENTS_TEST_CURRENT + ELEMENTS_TEST_WEEK_AGO):
         elems.append(Elements.objects.create(**element))
     return elems
+
+@pytest.fixture
+def week_ago():
+    date = datetime.date(datetime.now())
+    date -= timedelta(days=14)
+    return date.strftime("%Y-%m-%d")
+
+@pytest.fixture
+def year_ago():
+    date = datetime.date(datetime.now())
+    date -= timedelta(days=365)
+    return date.strftime("%Y-%m-%d")
