@@ -8,6 +8,9 @@
     - flake8
     - poetry
     - pytest
+
+# Демо проект задеплоеен на komtektest.herokuapp.com
+
 Для запуска приложения необходимо создать БД и задать переменные окружения
 SECRET_KEY
 DATABASE_URL
