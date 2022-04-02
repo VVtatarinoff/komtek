@@ -34,7 +34,7 @@ jobs:
           pip install poetry
           poetry install
       - name: Run migrations
-          run: python manage.py migrate
+        run: python manage.py migrate
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v2.7.4
         env:
