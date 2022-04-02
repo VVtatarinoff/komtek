@@ -1,3 +1,5 @@
+[![Linter-check](https://github.com/VVtatarinoff/komtek/actions/workflows/lint.yml/badge.svg)](https://github.com/VVtatarinoff/komtek/actions/workflows/lint.yml)
+
 # komtek
 Тестовое задание. ТЗ в файле "Комтек ИЗ Python"
 Стэк использованных технологий:
@@ -7,7 +9,10 @@
     - poetry
     - pytest
 
-API entrypoints:
+#API entrypoints:
+## /admin 
+
+    административная панель БД
 
 ## api/v1/references
 
@@ -15,7 +20,9 @@ API entrypoints:
     без параметров - получение списка справочников на текущую дату
     с параметром date (формат YYYY-MM-DD) - получение списка справочников на определенную дату, например:
         api/v1/references/?date=2022-03-29 - получение актуальных справочников на 29/03/2022
+    
     Возвращается json в следующем формате. Пагинация по 10 элементов
+    
     {"count": количество записей всего (число),
       "next": ссылка на следующую страницу,
       "previous": ссылка на текущую страницу,
