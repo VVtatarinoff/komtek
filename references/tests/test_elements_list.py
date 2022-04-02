@@ -6,6 +6,7 @@ from references.tests.fixtures.db_fixtures import (
 
 PAGE = 'elements'
 
+
 @pytest.mark.django_db
 def test_get_current_versions(setup_elements, client):
     expected_len = len(ELEMENTS_TEST_CURRENT)
@@ -14,6 +15,7 @@ def test_get_current_versions(setup_elements, client):
     assert response.data['count'] == expected_len
     assert response.accepted_media_type == 'application/json'
     assert len(response.data['results']) == min(10, expected_len)
+
 
 @pytest.mark.django_db
 def test_get_week_ago_versions(setup_elements, client, week_ago):
