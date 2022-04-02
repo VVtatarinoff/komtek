@@ -1,9 +1,7 @@
-import json
 import pytest
 from rest_framework.reverse import reverse_lazy, reverse
 from references.tests.fixtures.db_fixtures import (
-    ELEMENTS_TEST_CURRENT, ELEMENTS_TEST_WEEK_AGO,
-    REF_VERSIONS_TEST_MONGTH_AGO, TEST_CURRENT_ELEMENT,
+    TEST_CURRENT_ELEMENT,
     TEST_WEEK_AGO_ELEMENT, TEST_WEEK_AGO_VERSION, TEST_REFERENCE)
 
 PAGE = 'validation'
@@ -24,7 +22,8 @@ def test_validate_current_version(setup_elements, client):
 @pytest.mark.django_db
 def test_validate_old_version(setup_elements, client):
     """тестирование прошлой версии справочника с валидными данными"""
-    url = f"{reverse(PAGE, kwargs={'pk': TEST_REFERENCE})}?version={TEST_WEEK_AGO_VERSION}"
+    url = f"{reverse(PAGE, kwargs={'pk': TEST_REFERENCE})}" \
+          f"?version={TEST_WEEK_AGO_VERSION}"
     response = client.post(url,
                            content_type='application/json',
                            data=TEST_WEEK_AGO_ELEMENT)

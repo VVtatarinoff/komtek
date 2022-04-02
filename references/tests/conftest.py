@@ -31,11 +31,13 @@ def setup_elements(db, setup_ref_versions):
         elems.append(Elements.objects.create(**element))
     return elems
 
+
 @pytest.fixture
 def week_ago():
     date = datetime.date(datetime.now())
     date -= timedelta(days=14)
     return date.strftime("%Y-%m-%d")
+
 
 @pytest.fixture
 def year_ago():
