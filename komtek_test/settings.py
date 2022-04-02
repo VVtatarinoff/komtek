@@ -33,8 +33,8 @@ DEBUG = (os.getenv('DEBUG') == 'True')
 # DEBUG = True
 
 ALLOWED_HOSTS = ['localhost',
-                 'ancient-gorge-78100.herokuapp.com',
-                 'www.ancient-gorge-78100.herokuapp.com',
+                 'komtektest.herokuapp.com',
+                 'www.komtektest.herokuapp.com',
                  '127.0.0.1',
                  '0.0.0.0'
                  ]
