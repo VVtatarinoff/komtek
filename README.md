@@ -17,11 +17,14 @@ DATABASE_URL
 DEBUG=True  - если необходим 
 
 #API entrypoints:
-## /admin 
+## /admin/ 
 
     административная панель БД
 
-## api/v1/references
+## /swagger/ 
+    документация по доступным endpoints
+
+## api/v1/references/
 
 ###GET:
     без параметров - получение списка справочников на текущую дату
@@ -46,7 +49,7 @@ DEBUG=True  - если необходим
            ]
    }
 
-## api/v1/elements/<int>
+## api/v1/elements/<int>/
 
 ###GET:
     получение элементов справочника, указанного в параметре <int> - id справочника
@@ -70,7 +73,7 @@ DEBUG=True  - если необходим
            ]
    }
    
-## api/v1/elements/<int>
+## api/v1/elements/<int>/
 
 ###POST:
     передаваемый формат - json, словарь в виде ключ-значение
