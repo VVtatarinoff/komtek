@@ -8,6 +8,10 @@
     - flake8
     - poetry
     - pytest
+Для запуска приложения необходимо создать БД и задать переменные окружения
+SECRET_KEY
+DATABASE_URL
+DEBUG=True  - если необходим 
 
 #API entrypoints:
 ## /admin 
