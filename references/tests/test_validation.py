@@ -61,3 +61,16 @@ def test_wrong_key_current_version(setup_elements, client):
     assert response.status_code == 200
     assert len(response.data) == 1
     assert response.data['result'] is False
+
+
+@pytest.mark.django_db
+def test_no_data_current_version(setup_elements, client):
+    """тестирование текущей версии справочника с некорректным ключом"""
+    wrong_values = dict()
+    response = client.post(
+        reverse_lazy(PAGE, kwargs={'pk': TEST_REFERENCE}),
+        content_type='application/json',
+        data=wrong_values)
+    assert response.status_code == 200
+    assert len(response.data) == 1
+    assert response.data['result'] is False

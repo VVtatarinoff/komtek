@@ -80,7 +80,7 @@ class ValidateElementsAPIView(APIView):
             'version', get_current_version(reference_id))
         elements = list(Elements.objects.filter(
             ref_version_id=version_id, code__in=keys).all())
-        if len(elements) != len(data_to_check):
+        if len(elements) != len(data_to_check) or len(keys) == 0:
             check = False
         else:
             check = all(
