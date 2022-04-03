@@ -4,19 +4,22 @@
 
 # komtek
 Тестовое задание. ТЗ в файле "Комтек ИЗ Python"
+
+## Демо проект задеплоеен на https://komtektest.herokuapp.com/
+
 Стэк использованных технологий:
+
     - django rest framework
     - postgres
     - flake8
     - poetry
     - pytest
 
-# Демо проект задеплоеен на komtektest.herokuapp.com
-
 Для запуска приложения необходимо создать БД и задать переменные окружения
-SECRET_KEY
-DATABASE_URL
-DEBUG=True  - если необходим 
+
+    SECRET_KEY
+    DATABASE_URL
+    DEBUG=True  - если необходим 
 
 #API entrypoints:
 ## /admin/ 
