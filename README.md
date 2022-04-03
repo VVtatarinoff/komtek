@@ -1,4 +1,6 @@
 [![Linter-check](https://github.com/VVtatarinoff/komtek/actions/workflows/lint.yml/badge.svg)](https://github.com/VVtatarinoff/komtek/actions/workflows/lint.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/987ef0ed04a7342363f0/maintainability)](https://codeclimate.com/github/VVtatarinoff/komtek/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/987ef0ed04a7342363f0/test_coverage)](https://codeclimate.com/github/VVtatarinoff/komtek/test_coverage)
 
 # komtek
 Тестовое задание. ТЗ в файле "Комтек ИЗ Python"
